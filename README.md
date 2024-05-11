@@ -6,5 +6,5 @@
 ## Запуск проекту
 
 ```bash
-  "serve": "npx nx serve shell"
+npm run serve
 ```
