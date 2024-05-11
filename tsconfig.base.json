@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
+    "strictPropertyInitialization": false,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -15,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@etender-nx/block": ["libs/shared/block/src/index.ts"],
       "market/Routes": ["apps/market/src/app/remote-entry/entry.routes.ts"]
     }
   },
