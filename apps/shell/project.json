@@ -1,27 +1,27 @@
 {
-  "name": "Etender-NX",
+  "name": "shell",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
-  "sourceRoot": "apps/Etender-NX/src",
+  "prefix": "ng-mf",
+  "sourceRoot": "apps/shell/src",
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/Etender-NX",
-        "index": "apps/Etender-NX/src/index.html",
-        "main": "apps/Etender-NX/src/main.ts",
+        "outputPath": "dist/apps/shell",
+        "index": "apps/shell/src/index.html",
+        "main": "apps/shell/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/Etender-NX/tsconfig.app.json",
+        "tsConfig": "apps/shell/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/Etender-NX/src/favicon.ico",
-          "apps/Etender-NX/src/assets"
-        ],
-        "styles": ["apps/Etender-NX/src/styles.scss"],
-        "scripts": []
+        "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
+        "styles": ["apps/shell/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/shell/webpack.config.ts"
+        }
       },
       "configurations": {
         "production": {
@@ -37,7 +37,10 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/shell/webpack.prod.config.ts"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -51,13 +54,17 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:module-federation-dev-server",
+      "options": {
+        "port": 4200,
+        "publicHost": "http://localhost:4200"
+      },
       "configurations": {
         "production": {
-          "buildTarget": "Etender-NX:build:production"
+          "buildTarget": "shell:build:production"
         },
         "development": {
-          "buildTarget": "Etender-NX:build:development"
+          "buildTarget": "shell:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -65,7 +72,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "Etender-NX:build"
+        "buildTarget": "shell:build"
       }
     },
     "lint": {
@@ -75,7 +82,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/Etender-NX/jest.config.ts"
+        "jestConfig": "apps/shell/jest.config.ts"
       }
     }
   }

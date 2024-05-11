@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'Etender-NX',
+  displayName: 'market',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/Etender-NX',
+  coverageDirectory: '../../coverage/apps/market',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
